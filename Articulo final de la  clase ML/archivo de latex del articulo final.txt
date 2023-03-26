@@ -1,0 +1,782 @@
+%% 
+%% Copyright 2007-2020 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+%%
+%% 
+%%
+%% $Id: elsarticle-template-num.tex 190 2020-11-23 11:12:32Z rishi $
+%%
+%%
+\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+% \usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{natbib}
+\usepackage{multirow}
+\usepackage[spanish,onelanguage]{algorithm2e} %for psuedo code
+% \usepackage[spanish,es-tabla]{babel}
+% \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+% \usepackage{multirow}
+\usepackage[hyphens]{url}
+\usepackage{makecell} % for more vertical space in cells
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
+\journal{International Review of Financial Analysis (IRFA)}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \affiliation{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%% \fntext[label3]{}
+
+\title{Predicción del movimiento de la acción de bolsa ``S \& P 500"}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \affiliation[label1]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%%
+%% \affiliation[label2]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%% Opening quotes are `` and closing quotes are ". 
+
+\author[inst1]{María Luisa Argáez Salcido}
+
+\affiliation[inst1]{organization={Universidad Autónoma de Nuevo León},%Department and Organization
+            addressline={Pedro de Alba, Niños Héroes, Ciudad Universitaria}, 
+            city={San Nicolás de los Garza},
+            postcode={66451}, 
+            state={Nuevo León},
+            country={México}}
+
+
+\begin{abstract}
+%% Text of abstract
+El presente artículo tiene como objetivo predecir si es conveniente comprar o no en la acción de ``S \& P 500". Esto se realizó mediante el análisis de series temporales, la generación de nuevas características a partir de los datos de los máximos, mínimos, de la apertura  y de cierre de la acción de cada día en un periodo de tiempo de 20 años. La predicción se realizó utilizando algoritmos de aprendizaje máquina como bosques aleatorios y XGBoost obteniendo resultados de 48.2\% y  48.57 \% de exactitud respectivamente.
+\end{abstract}
+
+%%Graphical abstract
+%%\begin{graphicalabstract}
+%%\includegraphics{grabs}
+%%\end{graphicalabstract}
+
+%%Research highlights
+%%\begin{highlights}
+%%\item Research highlight 1
+%%\item Research highlight 2
+%%\end{highlights}
+
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+clasificación  \sep ``S \& P 500" \sep aprendizaje automático
+%% PACS codes here, in the form: \PACS code \sep code
+%\PACS 0000 \sep 1111
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+%\MSC 0000 \sep 1111
+\end{keyword}
+
+\end{frontmatter}
+
+%% \linenumbers
+
+%% main text
+\section{Introducción}
+\label{sec:sample1}
+
+%que es el trading
+\subsection{Trading}
+El comercio de acciones, o también llamado en inglés \textit{``Trading"}, es  la compra y venta de valores, como acciones, bonos, divisas y materias primas, en donde el éxito comercial depende de la capacidad del comerciante para ser rentable con el tiempo \cite{halls-mooreTrading}.
+
+Ahora bien, el comercio algoritmico, también llamado comúnmente \textit{trading} algorítmico, es el uso de un sistema automatizado para que se realicen operaciones, que se ejecutan de forma predeterminada a través de un algoritmo específicamente sin intervención humana \cite{halls-mooreTrading}.
+
+La ejecución automatizada es el proceso de permitir que la estrategia genere automáticamente señales de ejecución que se envían al corredor sin intervención humana. Esta es la forma más pura de estrategia comercial algorítmica, ya que minimiza los problemas debido a los errores cometidos por naturaleza en la intervención humana. 
+
+Es importante para una ejecución automátizada definir los siguientes conceptos:
+
+\begin{itemize}
+    \item Latencia.
+    Se define como el intervalo de tiempo entre una simulación y una respuesta
+     \item Elección del lenguaje de programación. 
+     Puede ser  $C++$, $C$ y Java o bien  MATLAB, R y Python
+    \item Tipo de colocación. 
+    Un comerciante minorista probablemente ejecutará su estrategia desde casa durante el horario de mercado en dónde encenderá su computadora, se conectará a la bolsa, actualizará su software de mercado y luego permitirá que el algoritmo se ejecute automáticamente durante el día. Por el contrario, un fondo cuantitativo profesional con importantes activos bajo administración tendrá una infraestructura de servidor ubicada en el intercambio dedicado para reducir la latencia en la medida de lo posible para ejecutar sus estrategias de alta velocidad.
+\end{itemize}
+
+
+Es fundamental definir la estrategia que se seguirá, por tanto, la identificación de estrategias involucra las preferencias personales como con el rendimiento de la estrategia, cómo determinar el tipo y la cantidad de datos históricos para prueba del modelo asi cómo evaluar desapasionadamente una estrategia comercial y, finalmente, cómo proceder hacia la fase de backtesting y la implementación de la estrategia. Entre las ideas principales a evaluar para una estrategia de abastecimiento se encuentran:
+
+\begin{itemize}
+    \item Investigación de ideas comerciales algorítmicas. Esta característica se basa en comparar su trabajo con otros.
+    \item Evaluación de estrategias comerciales. 
+    Una evaluación de estrategia comprende diferentes temas importantes a destacar, en primer lugar la metodología, que involucra ciertos indicadores como la relación de Sharpe, el apalancamiento, volatilidad, la ganancia y perdida, tipo de pérdida, líquidez, parámetros y el punto de referencia. A continuación se entra en detalle en cada uno. 
+    \item  Metodología
+        \begin{itemize}
+                   \item Relación de Sharpe.
+                    El ratio de Sharpe se  caracteriza heurísticamente como la proporción del riesgo/beneficio de la estrategia ya que cuantifica la magnitud del retorno que se puede lograr para el nivel de volatilidad soportado por la curva de acciones. Naturalmente, se necesita determinar el período y la frecuencia entre estos rendimientos y la volatilidad (desviación estándar).
+                    
+            \item Apalancamiento. Ayuda a responder a la pregunta ¿La estrategia requiere un apalancamiento significativo para ser rentable?
+            \item Frecuencia.
+                    La frecuencia de la estrategia está relacionada con la tecnología con la que se cuenta, el índice de Sharpe y el nivel general de los costos de transacción.
+             \item  Volatilidad.
+                    La volatilidad está fuertemente relacionada con el ``riesgo" de la estrategia. Una mayor volatilidad de las clases de activos subyacentes, si no están cubiertas, a menudo conduce a una mayor volatilidad en la curva de acciones y, por lo tanto, índices de Sharpe bajos.
+            \item Ganancia$/$pérdida y  ganancia$/$pérdida promedio.
+                    Las estrategias diferirán en sus características de ganancia/pérdida y ganancia/pérdida promedio. Uno puede tener una estrategia muy rentable, incluso si el número de operaciones perdedoras supera el número de operaciones ganadoras. Por ejemplo,  las estrategias de impulso tienden a tener este patrón, ya que se basan en una pequeña cantidad de ``grandes éxitos$"$ para ser rentables. Por otro lado, las estrategias de reversión a la media tienden a tener perfiles opuestos donde la mayoría de las operaciones son "ganadoras", pero las operaciones perdedoras pueden ser bastante graves.
+            \item Reducción máxima.
+                    La reducción máxima es la mayor caída porcentual general de pico a valle en la curva de capital de la estrategia. Es bien sabido que las estrategias de impulso sufren períodos de caídas prolongadas (debido a una serie de muchas operaciones perdedoras incrementales). Muchos comerciantes se pueden dar por vencidos en períodos de reducción prolongada, incluso si las pruebas históricas han sugerido que esto es ``costumbre de negocios$"$ para la estrategia. Es importantísimo determinar el periodo de tiempo en el que el porcentaje de reducción se ve afectado antes de dejar de operar la estrategia.
+            \item Capacidad/Liquidez.
+                    La capacidad determina la escalabilidad de la estrategia para aumentar el capital. Muchos de los fondos de cobertura más grandes sufren importantes problemas de capacidad a medida que sus estrategias aumentan de capital.
+            \item  Parámetros.
+                     Se recomienda probar y configurar estrategias con la menor cantidad de parámetros posibles o asegurarse de tener suficiente cantidad de datos con los que probar la estrategias para identificar rápidamente si algún parametro aporta a la estrategia o no\cite{halls-mooreTrading}.
+             
+                    \end{itemize}
+\end{itemize}
+
+
+% hablar sbre ML
+\subsection{Aprendizaje Automático}
+Dichos algoritmos que se ejecutan sin intervención humana provienen del aprendizaje automático, el cual es un subcampo de la inteligencia artificial que permite a las computadoras realizar tareas sin ser explicitamente programadas, si no que a través de un entrenamiento sean capaces de realizar cálculos por ellas mismas.
+
+En el aprendizaje automáticos existen diversos enfoques de aprendizaje, este artículo se enfoca principalmente en el supervisado y se distingue por que la matriz de datos tiene características $X$ que describen a las muestras y una variable de respuesta $y$, de tal forma que se entrena o se le enseña al algoritmo a encontrar relaciones entre la variable de respuesta y las características para posteriormente, predecir la variable $y$ con base a las características de la muestra.
+
+A su vez, el aprendizaje supervisado se divide en dos grupos llamados de clasificación y de regresión. Se le llama de clasificación cuando se predice una variable categorica  y cuando se predice una variable continua se le conoce como de regresión \cite{bishop}.
+
+
+% Back testing
+\subsection{Back-testing}
+El término de comprobación retrospectiva, también conocido en inglés como \textit{back-testing}, es el proceso de creación de una estrategia automatizada, en que su rendimiento se puede determinar en los datos históricos del mercado, que en el mejor de los casos, son representativos de los datos del mercado futuro. 
+
+Entre las ventajas del \textit{backtesting} es que permite una valoración histórica de tal manera que ayuda a determinar las propiedades estadísticas (anteriores) de la estrategia, lo que proporciona información sobre si es probable que una estrategia sea rentable en el futuro. Por otra parte, permite mejor eficiencia, en el aspecto de que el comercio algorítmico es sustancialmente más eficiente que un enfoque discrecional ya que con un sistema completamente automatizado, no hay necesidad de que un individuo o equipo esté constantemente monitoreando los mercados para la acción del precio o la entrada de noticias.
+
+Además permite comparar diferentes estrategias y elegir la más conveniente al mismo tiempo que permite frecuencias más altas de toma de decisiones ya que las estrategias que operan a frecuencias más altas en muchos mercados se vuelven posibles en un entorno automatizado. De hecho, algunas de las estrategias comerciales más rentables operan en el dominio de frecuencia ultra alta en los datos del libro de órdenes limitadas.
+
+Sin embargo, el comercio algorítmico tambien tiene desventajas, entre las cuales se encuentran principalmente requerimientos de gran capital puesto que el comercio algorítmico, generalmente, requiere una base de capital mucho más grande que la que se utilizaría para el comercio minorista discrecional, lo cual se debe  al hecho de que hay pocos corredores que admiten la ejecución automatizada de operaciones que no requieren cuentas mínimas.
+
+Además que las muestras de datos de un día o conocidos en inglés como \textit{intraday feed} de los minoristas a menudo tienen un precio de entre \$300 y \$500 dólares por mes, mientras que los feeds comerciales tienen un orden de magnitud superior. Sin dejar de lado que se necesita de una buena infraestructura computacional y un equipo especializado de programación y experiencia científica \cite{halls-mooreBacktesting}. 
+
+
+% datos 
+\subsection{Datos}
+La obtención de datos históricos es muy importante ya que es la materia prima de los algoritmos de aprendizaje automático. Se sugiere que los datos sean significativos del tema, esto incluye gran variedad de datos como tendencias macroeconómicas, como tasas de interés, cifras de inflación, acciones corporativas (dividendos y/o división de acciones), cuentas corporativas, cifras de ganancias, informes de cosechas, datos meteorológicos, etc. Estos datos a menudo se usan para valorar empresas u otros activos sobre una base fundamental, datos de noticias, precios de activos, de instrumentos financieros, entre otros. 
+
+Es fundamental definir la frecuencia de los datos ya que  entre más frecuente, mayores serán los costos, los requisitos de almacenamiento y tecnología, esto da pie a la infraestructura de datos que se necesitará ya que el almacenamiento de datos financieros puede ser complejo y llegar a requerir demasiado esfuerzo. 
+
+Para el comerciante minorista algorítmico o el pequeño fondo cuantitativo, toma en cuenta los conjuntos de datos más comunes que son los precios históricos al final del día, o en inglés \textit{End Of the Day, (EOD)}, o precios intradía para acciones, índices, futuros (principalmente materias primas o renta fija) y divisas (forex). Para fines de este artículo se utilizarán los datos EOD para índices de acciones. Es posible obtener datos financieros de: Yahoo Finanzas, Finanzas de Google, Cuantificauion, entre otros provedores.
+
+Hay tres formas principales de almacenar datos financieros. Todos ellos poseen diversos grados de acceso, rendimiento y capacidades estructurales. Entre ellos se encuentran: almacenamiento de archivos planos, almacenamiento de documentos-NoSQL y sistemas de gestión de bases de datos relacionales \cite{halls-mooreData}.
+ 
+Evaluar la precisión de los datos es fundamental ya que si no son confiables, se pone en riesgo factores muy importantes como grandes cantidades de dinero.\\
+
+
+Los datos de precios históricos de los proveedores son propensos a muchas formas de error como las siguientes: 
+\begin{itemize}
+    \item El incorrecto manejo de reparto de acciones y ajustes de dividendos, se debe estar absolutamente seguro de que las fórmulas se han implementado correctamente.
+    \item Detección de Picos. Son puntos de precios que superan en gran medida ciertos niveles históricos de volatilidad. Los picos también pueden ser causados por no tener en cuenta las divisiones de acciones cuando ocurren. Los códigos de filtro de picos se utilizan para notificar a los comerciantes de tales situaciones.
+    \item Agregación de los datos de las acciones llamados en inglés \textit{Open, High, Low, Close (OHLC)}, o bien apertura, máximo, mínimo y cierre del precio. Existen datos gratuitos de \textit{OHLC}, como los de Yahoo o Google, que son particularmente propensos a situaciones de ``agregación de muestra", o en inglés ``\textit{ticks} incorrectos$"$ en las que los intercambios más pequeños procesan transacciones pequeñas muy por encima de los precios de intercambio principales del día, lo que conduce a máximos o mínimos sobreinflados, una vez agregados. Esto es menos un ``error$"$  como tal, pero más un problema del que hay que tener cuidado.
+    \item Datos faltantes. Los datos faltantes pueden deberse a la falta de transacciones en un período de tiempo particular (común en datos de resolución de segundo/minuto de empresas de pequeña capitalización sin liquidez), por días feriados comerciales o simplemente un error en el sistema de intercambio. Los datos faltantes se pueden rellenar (es decir, rellenar con el valor anterior), interpolar (linealmente o de otro modo) o ignorar, según el sistema de comercio \cite{halls-mooreData}.
+ 
+\end{itemize}
+
+%doe begin
+\subsection{Diseño de Experimentos}
+
+Técnica desarrollada por Ronald Fisher, el Diseño de Experimentos (DoE) , por sus siglas en inglés, es una técnica estadística que estudia el efecto de uno o más factores sobre la media de una variable continua.
+
+Las suposiciones que se plantean es:
+
+$$H_0: \mu_1 = \mu_2 = ... = \mu_k$$
+
+$$H_1: \mu_i \neq \mu_j$$
+
+En otras palabras, se plantea la hipótesis nula en el supuesto de que la media de los grupo es igual mientras que la hipótesis alternativa es que al menos una media de los grupos es diferente.
+
+Es importante tener en cuenta las condiciones iniciales para aplicar este tipo de ANOVA, los cuales son:
+
+\begin{itemize}
+    \item Independencia. Es decir que las muestras son independientes y aleatorias.
+    \item Distribución normal. Esto indica que los datos de cada grupo deben seguir una distribución normal. Este supuesto en ocasiones puede ser ignorado ya que la técnica del ANOVA es robusta.
+    \item Homocedasticidad, Indica misma varianza entre grupos. La varianza entre los grupos debe de asemejarse. Este supuesto puede no ser tan estricto si existe el mismo número de observaciones por grupo \cite{Amat}.
+\end{itemize}
+
+
+
+
+%doe end
+
+
+% Despues de hablar de ciertos temas introductorios se  presenta el problema, los datos en general y su relevancia o importancia de estudio [1 punto], con al menos un par de referencia
+\subsection{Análisis presente}
+
+En este análisis se compararon los resultados de predicción clasificación del algoritmo de bosques aleatorios y XG boost en contraste con los datos reales. Es importante destacar que los datos no siguen una distribución normal, más bien es binomial, sin embargo este supuesto no será tan extricto para efectos del ejercicio. Por otro lado, el supuesto de homocedasticidad puede ser laxo en el aspecto de que existe el mismo número de muestras en cada grupos.
+
+Por tanto, es posible concluir que estudiar las acciones es una tarea que implica conocimientos profundos de economia, programación y ciencia de datos para lograr una estrategía de un comercio algorítmico eficiente y poder predecir el movimiento del previo de las acciones, o bien el momento adecuado de cuando comprar una acción.\\
+
+Además, estudiar las acciones del mercado de valores está estrechamente ligado al crecimiento económico de un país y genera grandes inversiones por parte de los inversionistas y emite acciones de interés público, pronosticar el movimiento de los precios de las acciones y el mercado se vuelve esencial para evitar grandes pérdidas y tomar decisiones relevantes \cite{Soni2022}.\\
+
+Hoy en día la tecnología de la información, todavía se la considera una de las aplicaciones más desafiantes de la predicción de series temporales. Sin embargo, las evidencias existentes de esta área aún carecen de suficientes experimentos de comprensión en la mayoría de los mercados en desarrollo, los cuales han ganado más y más atención recientemente.
+
+Esta investigación  tiene la intención de analizar la acción de `` S\& P 500" para dar recomendaciones de cuando comprar o no en la misma. Dicha predicción de decisión de compra se realiza utilizando algoritmos de aprendizaje máquina, especificamente con bosques aleatorios y XGBoot, los cuales se compararán conforme a sus resultados y la naturaleza de cada uno.\\
+
+
+Por otro lado, la predicción del movimiento del precio del mercado de valores enfrenta dos corrientes importantes, la primera que establece que no es posible predecir los precios de las acciones  en función de los datos disponibles. En contraste con la hipótesis de que si es posible predecir el movimiento de las acciones, siempre y cuando los datos se procesen de una manera eficiente. Si bien, se cree que es mejor monitorear y descubrir nuevas estrategias que permitan generar conocimiento y tomar mejores decisiones basadas en datos \cite{Chin-Sheng2019}.\\
+
+Por último, en este artículo se trabajará un análisis descriptivo de las \textit{intraday ticks} del índice de bolsa de ``S\& P 500$"$ al finalizar el día (EOD), de la generación de características útiles para después aplicar el algoritmo de selección de características secuencial o en inglés \textit{Sequential Feature Selection (SFS)} de acuerdo al algoritmo de aprendizaje automático que se pruebe, ya sea el de bosques aleatorios o el de XGBoost. Después, se incluye la técnica de \textit{Back-testing} y finalmente, se comparan los resultados con una matriz de confusión y la evaluación de su reproducibilidad con un diseño de experimentos con el fin de evaluar la predicción de compra en dicha acción.
+
+% fin de introducción
+
+\section{Revisión de literatura}
+
+% Citar 3 artículos cientificos que muestren buenos resultados .
+Actualmente se han realizado numerosas investigaciones sobre el comportamiento de las acciones de la bolsa de valores, entre ellos esta Subasi\cite{Subasi2021}, quien compara siete algoritmos de aprendizaje automático, los cuales fueron redes neuronales artificiales, K- Vecinos más cercanos, máquinas de soporte vectorial, árboles de decisión, bosques aleatorios, \textit{bagging} y \textit{boosting} en dónde analizó cuatro conjuntos de datos de índices bursátiles de inversión de riesgo. El algoritmo de aprendizaje automático que mostró mejor rendimiento fue el bosque aleatorio.\\
+
+Por otro lado, Chin Sheng y su equipo \cite{Chin-Sheng2019} alienta a emular las decisiones humanas mientras usa algoritmos de aprendizaje máquina, en su investigación compara cuatro algoritmos de aprendizaje máquina, los cuales fueron redes neuronales artificiales, máquina de soporte vectorial, bosques aleatorios y Naive- Bayes utilizando datos de 19 años del índice de la bolsa de valores llamado `` TWSE".  Ellos utilizan diez parámetros técnicos que reflejan la condición de las acciones y el índice de precios de las acciones para conocer cada uno de estos modelos, además emplean una capa de preparación de datos deterministas de tendencia para convertir cada uno de los valores continuos del indicador técnico en $\mp 1$ , lo que indica un probable movimiento hacia arriba o hacia abajo en el futuro, respectivamente.\\
+
+Es importante mencionar los experimentos con datos de valor continuo muestran que las redes neuronales aritificiales tienen un rendimiento más alto y que los experimentos con datos de valores discretos que muestran el algoritmo de bosques aleatorios con el rendimiento más alto. Además, Chin Sheng \cite{Chin-Sheng2019} promueve el aprendizaje con datos deterministas de tendencia reflejando que el rendimiento de todos estos modelos mejora significativamente, alcanzando un 77\% con todos los algoritmos menos con  Naive-Bayes.\\
+
+Soni Payal \cite{Soni2022} propuso un estudio comparativo de varios algoritmos para pronosticar los precios de diferentes acciones. El estudio se amplió desde los algoritmos tradicionales del aprendizaje automático como boques aleatorios, K- vecinos más cercanos, máquinas de soporte vectorial, Naive Bayes,  modelos de aprendizaje profundo como  redes neuronales en especial las redes neuronales convolucionales, redes neuronales artificiales, memoria a largo plazo, etc. Este estudio también incluye varios  enfoques, como análisis de sentimientos, análisis de series temporales y algoritmos basados en gráficos, y compara los resultados de estos algoritmos para predecir los precios de las acciones de varias empresas.
+%fin de literature review
+
+%inicio marco teorico
+\section{Marco teórico}
+
+En el marco teórico se introduce al lector a los algoritmos de ensamble que tiene como objetivo principal mejorar el rendimiento de los algoritmos de aprendizaje máquina individuales de tal forma que combinan algoritmos de diferentes maneras  para lograr un modelo que generalice mejor y presente mejores resultados.
+
+\subsection{Métodos de ensamble}
+
+Los conceptos de \textit{Bagging} o \textit{Boosting} son las técnicas más populares de ensamble, las cuales ofrecen técnicas distintas para mejorar la exactitud de un algoritmo predictivo.
+
+El aprendizaje por ensamble surge debido a la necesidad de corregir los errores que presentan algunos modelos individuales del aprendizaje automático (AA) puesto que en ocasiones tienden a funcionar mal, lo cual implica tener baja presición al realizar una predicción. De tal manera que los modelos individuales que se combinan para hacer uno más fuerte, se le conocen como algoritmos débiles, o en inglés \textit{weak learners}, ya que tienen un sesgo alto o una variación alta, razón por la  cual no es posible que aprendan de manera eficiente y presentan un mal desempeño. 
+
+Cuando un modelo presenta alto sesgo es por que no aprendió suficientemente bien de los datos presentados, lo cual implica que las predicciones no tendrán sentido con los datos de entrada. Por otro lado, un modelo con varianza alta resulta de haber aprendido demasiado bien de los datos de tal manera que presenta predicciones muy diferentes de acuerdo a los datos de entrada y resulta difícil predecir con presición el siguiente punto.
+La relación de sesgo-varianza en un modelo de ensamble de bajo rendimiento tiene un sesgo alto y una varianza baja, mientras que un modelo sobreajustado tiene una varianza alta y un sesgo bajo. En cualquier caso, no hay equilibrio entre el sesgo y la varianza. Para que haya un equilibrio, tanto el sesgo como la varianza deben ser bajos. El aprendizaje por ensamble intenta encontrar un equilibrio entre sesgo y varianza reduciendo el sesgo o la varianza.
+
+El aprendizaje conjunto mejora el rendimiento de un modelo principalmente de tres maneras. La primera es reducir la varianza de los \textit{weak learners}, reducir el sesgo  de los \textit{weak learners} y mejorar la precisión general de los algoritmos.
+
+Para reducir una alta varianza, se utiliza \textit{Bagging} también conocido como \textit{Bootstrap aggregating}, ya que tiene por objetivo hacer un modelo con baja varianza a diferencia de un modelo individual débil. Cuando se menciona, \textit{Bootstrap}, hace referencia a que se toman subconjuntos de datos del conjunto de datos inicial y a estos subconjuntos de datos se denominan conjuntos de datos de arranque o, simplemente, arranques. Remuestreado ``con reemplazo" significa que un punto de datos individual se puede muestrear varias veces y con cada conjunto de datos de arranque se utiliza para entrenar a un modelo débil. Por otra parte, \textit{aggregating} hace referencia a que los \textit{weak learners} individuales son entrenados independientemente unos de otros y los resultados de esas predicciones se agregan al final para obtener la predicción general ya sea utilizando la votación máxima o el promedio.
+
+
+En contraste, para reducir un sesgo alto, se utiliza el \textit{Boosting}. 
+ Se utiliza \textit{boosting} para combinar \textit{weak learners} con alto sesgo. El \textit{boosting} tiene como objetivo producir un modelo con un sesgo más bajo que el de los modelos individuales. Al igual que en el \textit{bagging}, los\textit{weak learners} son homogéneos.
+
+El \textit{boosting} implica enseñar secuencialmente a los \textit{weak learners}. Aquí, cada modelo subsiguiente mejora los errores de los modelos anteriores en secuencia. Primero se toma una muestra de datos del conjunto de datos inicial, dicha muestra se utiliza para entrenar el primer modelo y el modelo hace su predicción. Las muestras pueden predecirse correcta o incorrectamente, pero las muestras que se predicen incorrectamente se reutilizan para entrenar el siguiente modelo. De esta forma, los modelos posteriores pueden mejorar los errores de los modelos anteriores.
+
+A diferencia del \textit{bagging}, que agrega los resultados de la predicción al final, el \textit{boosting}  agrega los resultados en cada paso y se agregan utilizando un promedio ponderado. El promedio ponderado implica otorgar a todos los modelos diferentes pesos según su poder predictivo. En otras palabras, da más peso al modelo con mayor poder predictivo. Esto se debe a que el modelo con mayor poder predictivo se considera el más importante \cite{EnsamblesVidhya}.
+
+De tal manera que se compararon los resultados de un algoritmo de \textit{bagging} y otro de \textit{boosting}, los  cuales son bosques aleatorios y el XGBoost.
+
+\subsubsection{Bosques aleatorios}
+
+Los bosques aleatorios es un conjunto basado en árboles aleatorios con cada árbol dependiendo de una colección de variables aleatorias. Más formalmente, para un vector aleatorio $p$-dimensional  $X = (X_1,...,X_p)^T$ que representa la entrada de valor real  y una variable aleatoria $Y$ que representa la respuesta de valor real. Se supone una distribución conjunta desconocida $P_{XY} (X,Y)$. El objetivo es encontrar una función de predicción, $f(X) $ para predecir $Y$. La función de predicción está determinada por una función de pérdida $L(Y, f(X))$ y definido para minimizar el valor esperado de la pérdida $E_{XY} (L(Y, f(X)))$.
+
+Intuitivamente, $L(Y, f(X))$es una medida de qué tan cerca está $f(X)$ de $Y$; penaliza los valores de $f(X)$ que están muy lejos de $Y$. Las opciones típicas de $L$ son pérdida de error al cuadrado, $L(Y, f(X)) = (Y - f(X))^{2}$ para regresión y pérdida cero-uno para clasificación:
+
+$$L(Y, f(X)) = I(Y \neq f(X) = \left\lbrace\begin{array}{c} 0 \text{ si } Y=f(X)\\ 1 \text{ otro caso} \end{array}\right.$$
+
+Si se minimiza $E_{XY}(L(Y, f(X)))$ para la pérdida de error al cuadrado da la expectativa condicional, entonces: $f(x) = argmax_{y \in Y} P(Y = y| X =x)$, lo cual se le conoce también como la regla de Bayes. 
+
+Los modelos de ensamble construyen $f$ en términos de una colección de los llamados \textit{weak learners}, $h_1(x),...,h_j(x)$ y estos \textit{weak learners}base se combinan para dar el "predictor de conjunto" $f(x)$. En la clasificación, los \textit{weak learners} se utiliza la votación:
+$$ f(x) = argmax_{y \in Y} \sum_{j=1}^{J} I(y=h_j)(x))$$
+
+En árboles aleatorios, el $j-$ésimo \textit{weak learner} es un árbol denominado $h_j(X,\theta_j)$, donde $X$ es una colección de variables aleatorias y las $\theta_j$ son independientes para $j = 1,..., J$ \cite{inbook}.\\ \\
+
+\subsubsection{XGBoost}
+
+El algoritmo de XGBoost hace referencia por su nombre en inglés \textit{eXtreme Gradient Boosting}, implementa un algoritmo basado en \textit{weak learners} de incremento de gradiente. El incremento de gradiente es un enfoque en el que se crean nuevos modelos que predicen los residuos o errores de modelos anteriores y luego se adicionan para realizar la predicción final. Se llama incremento de gradiente porque utiliza un algoritmo de descenso de gradiente para minimizar la pérdida al agregar nuevos modelos. El  algoritmo minimiza el error de predicción con respecto al gradiente negativo de la función de pérdida, similar a un optimizador de descenso de gradiente convencional. El costo computacional durante el entrenamiento es, por lo tanto, proporcional al tiempo que lleva evaluar los posibles puntos de división para cada característica. 
+Entre las características del XGBoost se mencionan las siguientes:
+\begin{itemize}
+    \item Regularización. Se utiliza la regularización como $L_1$ y $L_2$ para prevenir el sobreajuste.
+    \item Es capaz de manejar datos faltantes.
+    \item Maneja el algoritmo de bosquejo cuantil ponderado distribuido para manejar de manera efectiva los datos ponderados.
+    \item Cuenta con una estructura de bloques para aprendizaje paralelo.
+    \item Optimiza el espacio disponible en el disco y maximiza su uso cuando se manejan grandes conjuntos de datos que no caben en la memoria
+\end{itemize}
+
+En los algoritmos de aprendizaje automático supervisados se cuenta con atributos o características $X$ y la variable respuesta $y$ y el objetivo es pronosticar $y = f(x)$ donde ${(X_i, Y_i)}$ con $i=1,…,n,$.
+
+Se  necesita obtener el valor objetivo $y$ dada la entrada $X$ usando la mejor función, que produce menos errores o pérdidas. La función de pérdida es conocida como $L(y, f)$, la cual debe de ser lo más cercana a cero que se pueda y diferenciable. 
+
+Se define la función $f(x)$ tal que:
+
+$$\hat{f}(x) = argmin_{f(x)} E_{x,y} [L(y, f(x))] $$
+
+Es posible restringir el área de búsqueda por una determinada familia de características $f(x,\theta), \theta \in R_d$. Es apropiado, lo cual simplifica  el objetivo, ya que ahora tenemos una optimización de valores de parámetros:
+
+$$\hat{f}(x) = f(x, \hat{\theta})$$
+$$\hat{\theta} = argmin_{\theta}  E_{x,y} [L(y, f(x))] $$
+$$\hat{\theta} = \sum_{i = 1}^{M} \hat{\theta}_i$$
+$$L_{\hat{\theta}} =  \sum_{i = 1}^{N} L(y_i, f(x_i, \hat{\theta}))$$
+
+Por tanto se busca mínimizar  $L_{\hat{\theta}}$, en dónde la opción más utilizada es el gradiente descendente. El pseudocódigo del  gradiente descendente se describe en el ``Algoritmo 1 ". 
+El algoritmo del gradiente descendiente comienza inicializando los pesos $\theta$ al azar. Despues, se calculan los gradientes $\nabla L_{\theta} (\hat{\theta})$ de la función de costo, lo cual se hace diferenciación parcial: $\frac{\partial L(y, f(x,\theta))} { \partial \theta}$. El valor del gradiente, depende de las entradas, los valores actuales de los parámetros del modelo y la función de costo. Se actualizan los pesos en una cantidad proporcional y se repite hasta que la función de costo deje de reducirse o se cumpla algún otro criterio de terminación predefinido \cite{GradientBoosting}.
+
+
+%pseudocode inicio
+
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead 
+\KwData{ Aproximación inicial de los parámetros $\hat{\theta} = \hat{\theta}_0$}
+% \KwOut{Gradiente descendiente \hat{f}(x) }
+% $C \gets \emptyset$\;
+\For{$t \gets 1$ to $M$}{
+  \begin{enumerate}
+      \item Calcular la función de pérdida de gradiente $\nabla L_{\theta} (\hat{\theta})$ para la aproximación de $\hat{\theta}$ :
+        $$\nabla L_{\theta} (\hat{\theta}) = \left[\frac{\partial L(y, f(x,\theta))} { \partial \theta}\right]_{\theta = \hat{\theta}}$$
+    \item  Declarar la aproximación iterativa actual $\hat{\theta}_t$ basada en el calculo del gradiente $\hat{\theta}_t \leftarrow -\nabla L_{\theta} (\hat{\theta})$
+    \item Se actualiza la aproximación de parámetros $\hat{\theta} : \hat{\theta} \leftarrow  \hat{\theta} + \hat{\theta}_t = \sum_{t=0}^t \hat{\theta}_i $
+    \item Guardar el resultado de la aproximación $\hat{\theta} : \hat{\theta} \leftarrow   = \sum_{t=0}^t \hat{\theta}_i $
+    \item  Usar la función encontrada $\hat{f}(x) = f(x, \hat{\theta})$
+  \end{enumerate}
+}
+\Return{$\hat{f}(x)$}\;
+\caption{Gradiente descendente \cite{GradientBoosting}}\label{alg:cap}
+\label{algo:change}
+\end{algorithm}
+%fin marco teorico
+\newpage
+%inicio metodologia
+\section{Metodología}
+
+\subsection{Base de datos}
+Los datos llamados ``OHLC$"$ se deriva del acrónimo en inglés  \textit{Open High Low Close} y en español tienen su traducción como apertura, máximo, mínimo y cierre y describen una forma agregada de datos de la bolsa. Los datos de ``OHLC$"$ incluyen cuatro tipos de datos: la apertura y el cierre representan el primer y último nivel de precios durante un intervalo específico. Máximo y mínimo representan el precio más alto y más bajo alcanzado durante ese intervalo. Por lo general se agrega el volumen, el cual es la cantidad total negociada durante ese período, sin embargo, para efecto de este ejercicio se excluirá. Este tipo de dato se observa en diferentes frecuencias de muestreo que van desde un segundo hasta un día.
+
+El análisis de datos se  realizó utilizando el software libre \textit{Python}, el cual es un lenguaje de programación de alto nivel, de propósito general y muy popular \cite{van1995python}. 
+
+\textit{Python} cuenta con multiples librerias para diferentes própositos, entre las cuales se encuentra \textit{yfinance} \cite{yfinance}, la cual hace posible obtener los datos ``OHLC" de forma directa de diversos índices de inversión de la bolsa de valores, como es el interés de de este artículo con las acciones de ``S \& P 500" \cite{van1995python} . Los datos tienen una frecuencia de muestreo de un día y se obtuvieron 23 años de historia, en un periodo de tiempo del 23 de enero de 2000 al 23 de enero de 2023. Es importante denotar que la bolsa de valores abre de lunes a viernes de 9:30 a.m. a 16:00 p.m. y no abre días festivos, por tanto no se tienen 365 muestras por año, si no alrededor de 250 muestras por año . 
+
+\subsection{Análisis Descriptivo de Datos (ADD) Iniciales}
+
+Para una mejor comprensión de este artículo, primero se realiza un ADD a los datos de ``OHLC" , posteriormente se explicará la generación de características a partir de estos con su respectivo ADD.
+
+Los datos comprenden un periodo de enero 23 del año 2000 al 2023. Los descriptivos son medidas estadísticas que ayudan a los investigadores a entender de una manera general la distribución de los datos, entre ellos se encuentra la frecuencia, media, desviación estándar (Des. Est.), mínimo, primer, segundo y tercer cuartil (25\%, 50\% y 75\%) y máximo. Los descriptivos de los datos se muestran en el cuadro 1.
+
+\begin{table}[htp]
+\caption{Descriptivos de datos OHLC}
+    \centering
+    \begin{tabular}{|l|r|r|r|r|}
+    \hline
+        Descriptivos & Open & High & Low & Close  \\ \hline
+        Frecuencia & 5786.00 & 5786.00 & 5786.00 & 5786.00  \\ \hline
+        Media & 160.73 & 161.69 & 159.67 & 160.73  \\ \hline
+        Des. Est. & 104.12 & 104.71 & 103.46 & 104.13  \\ \hline
+        Mínimo & 51.64 & 53.20 & 50.99 & 51.76 \\ \hline
+        25\% & 85.37 & 85.89 & 84.83 & 85.32 \\ \hline
+        50\% & 107.88 & 108.52 & 106.99 & 107.74  \\ \hline
+        75\% & 214.17 & 214.91 & 213.51 & 213.88 \\ \hline
+        Máximo & 469.78 & 470.52 & 466.68 & 468.30 \\ \hline
+    \end{tabular}
+\end{table}
+
+En la figura 1, se muestra como el valor de apertura, cierre, mínimo y máximo estan altamente correlacionados positivamente ya que presentando cantidades muy cercanas a uno.
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=9cm]{corrohlc.pdf}
+    \caption{Matriz de correlación de los datos de S\&P 500}
+    \label{fig:corr_ohlc}
+\end{figure}
+
+La figura 2 muestra el cierre de precio desde el año 2000 hasta el 2023. Este artículo se enfocará en el cierre de precio como característica principal.
+
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=9cm]{cierreprecio.png}
+    \caption{Serie de tiempo del cierre de S\&P 500}
+    \label{fig:cierreprecio}
+\end{figure}
+
+En la figura 3, se muestra dos gráficos de velas de la acción ``S\& P500$"$ agregada a año y mes. El gráfico superior es un acercamiento a los últimos años, se observa un diagrama de caja y bigotes que, como los datos no muestran gran variabilidad, es posible confundirlo con una línea. Además, se muestra el gráfico de caja y bigotes en rojo cuando el precio de apertura es mayor que el de cierre y en color verde cuando el valor de cierre fue mayor que el de apertura, ya que es lo que se espera en el mejor de los casos. En la parte inferior es posible observar la historia completa de la acción a lo largo del periodo.
+
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=14cm, height=8cm]{grafico_velas.png}
+    \caption{Gráfico de vela de S\&P 500}
+    \label{fig:graficovelas}
+\end{figure}
+
+
+\subsection{Generación de características}
+
+A partir de los datos de ``OHLC$"$ y de su respectiva fecha es posible generar nuevas características que aportan información y enriquecen a la base de datos. Las nuevas características se describen a continuación. Entre paréntesis se encuentra el nombre de la variable que lleva en los descriptivos de la tabla 2.
+
+\begin{itemize}
+    \item Día (\texttt{Día}). Se extrae el día en que se obtuvo la muestra.
+    \item Mes (\texttt{Mes}). Se extrajó el mes en que se obtuvo la muestra.
+    \item Año (\texttt{Año}). Se obtuvo el año en que se obtuvo la muestra.
+    \item Mañana (\texttt{Mañana}). Se obtuvo el precio de cierre de un día después. Esta nueva columna, es precursora de la variable respuesta de este análisis.
+    \item Objetivo (\texttt{Objetivo}). La variable objetivo, es la variable que se quiere predecir. Los valores son 1 si el valor de la columna \texttt{Mañana} es mayor a los de \texttt{Cierre}. Es cero en otro caso. Esto indica que si el precio de mañana es mayor al de hoy, es conveniente comprar en la acción.
+    \item Término de trimestre (\texttt{Trimestre}). Esta característica es importante ya que empresas, analistas financieros y agencias gubernamentales publican informes y datos críticos al final de un trimestre y  los inversionistas  suelen utilizar el final de un trimestre para reevaluar y reequilibrar sus carteras.
+    \item Apertura-Cierre (\texttt{Aper-cie}). Es la diferencia entre el valor de apertura y el de cierre. En el mejor de los casos, es negativa ya que quiere decir que el valor de la acción ha subido.
+    \item Mínimo-máximo (\texttt{Mín-máx}). Es la diferencia entre el valor mínimo y el máximo y por lo general será positiva. 
+    \item Proporción de cierre en 2, 5, 60, 250 y 1000 días, (\texttt{C\_prop\_2}, \texttt{C\_prop\_5}, \texttt{C\_prop\_60}, \texttt{C\_prop\_250}, \texttt{C\_prop\_1000}). Estas características describen la relación del precio entre la media de los últimos 2, 5, 60 ,250 o 1000 días que se tomaron en cuenta. 
+    \item Tendencia de cierre en 2, 5, 60, 250 y 1000 días, (\texttt{Tend\_2}, \texttt{Tend\_5}, \texttt{Tend\_60}, \texttt{Tend\_250}, \texttt{Tend\_1000})  . Es la suma del periodo seleccionado, ya sea a 2, 5, 60 ,250 o 1000 días.
+    
+\end{itemize}
+
+
+\subsection{Análisis Exploratorio de Datos}
+
+Ahora que ya se han generado más características es posible aportar más información al análisis. La distribución estandarizada para cada característica se muestra en la figura 4. Asi mismo, en el cuadro 2 se observan los descriptivos de cada variable, cada una ya fue explicada en la sección 4.3, del mismo modo los descriptivos utilizados fueron la frecuencia (Frec), media (Media), desviación estándar (Des. Est.), mínimo (Mín), máximo (Máx), y el primer, segundo y tercer cuártil (25\%, 50\% y 75\%). La figura 5 muestra la distribución de la variable objetivo categorica que indica que el 54.2\% de los valores son de tomar la decisión de no comprar mientras que el resto es de tomar la decisión de comprar. La figura 6 muestra un mapa de calor de correlaciones, la cual se filtro para todas aquellas correlaciones mayores o menores a $0.5$, lo cual se considera que es más significativo.
+
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=12cm,, height=10cm]{ridgeplot.pdf}
+    \caption{Gráfico de distribución de datos}
+    \label{fig:boxplot}
+\end{figure}
+
+
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=4cm]{targ.png}
+    \caption{Proporción de la variable objetivo: Decisión de comprar o no en la acción}
+    \label{fig:targ}
+\end{figure}
+
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=12cm,height=10cm]{corrall.pdf}
+    \caption{Mapa de calor de correlaciones filtrada}
+    \label{fig:corre21}
+\end{figure}
+
+\begin{table}[!ht]
+\caption{Descriptivos de las características}
+    \centering
+    \begin{tabular}{|c|r|r|r|r|r|r|r|r|}
+    \hline
+        Car/Des & Frec & Media & Des.Est. & Mín & 25\% & 50\% & 75\% & Máx \\ \hline
+        \texttt{Apertura} & 5786& 160.00 & 104.12 & 51.64 & 85.37 & 107.88 & 214.00 & 469.00  \\ \hline
+        \texttt{Máximo} & 5786 & 161.00 & 104.71 & 53.20 & 85.89 & 108.52 & 214.00& 470.00  \\ \hline
+        \texttt{Mínimo} & 5786 & 159.00 & 103.46 & 50.99 & 84.83 & 106.99 & 213.00& 466.00 \\ \hline
+        \texttt{Cierre} & 5786 & 160.00& 104.13 & 51.76 & 85.32 & 107.74 & 213.00 & 468.00  \\ \hline
+        \texttt{Día} & 5786 & 15.70 & 8.76 & 1.00 & 8.00 & 16.00 & 23.00& 31.00 \\ \hline
+        \texttt{Mes} & 5786 & 6.54 & 3.43 & 1.00 & 4.00 & 7.00 & 10.00 & 12.0 \\ \hline
+        \texttt{Año} & 5786& 2010& 6.63 & 2000 & 2005 & 2011 & 2021& 2023 \\ \hline
+        \texttt{Mañana} & 5785& 160.00 & 104.13 & 51.76 & 85.32 & 107.74 & 213.00 & 468.00  \\ \hline
+        \texttt{Trimestre} & 5786 & 0.34 & 0.47 & 0.00 & 0.00 & 0.00 & 1.00& 1.00  \\ \hline
+        \texttt{Aper\-cie} & 5786 & -0.01 & 1.73 & -16.94 & -0.61 & -0.06 & 0.55 & 13.90 \\ \hline
+        \texttt{Mín\-máx} & 5786& -2.02 & 2.12 & -21.80 & -2.20 & -1.33 & -0.88& -24.00  \\ \hline
+        \texttt{Objetivo} & 5786 & 0.54& 0.50 & 0.00 & 0.00 & 1.00 & 1.00 & 1.00 \\ \hline
+        \texttt{C\_prop\_2} & 5785 & 1.00 & 0.01 & 0.94 & 1.00 & 1.00 & 1.00 & 1.07  \\ \hline
+        \texttt{Tend\_2 }& 5784 & 1.08 & 0.70 & 0.00 & 1.00 & 1.00 & 2.00& 2.00 \\ \hline
+        \texttt{C\_prop\_5} & 5782 & 1.00& 0.01 & 0.90 & 0.99 & 1.00 & 1.00 & 1.09  \\ \hline
+        \texttt{Tend\_5} & 5781 & 2.71 & 1.08 & 0.00 & 2.00 & 3.00 & 3.00 & 5.00  \\ \hline
+        \texttt{C\_prop\_60} & 5727 & 1.00 & 0.04 & 0.72 & 0.99 & 1.02 & 1.04 & 1.16 \\ \hline
+        \texttt{Tend\_60} & 5726& 32.50 & 3.82 & 22.00 & 30.00 & 33.00 & 35.00 & 43.00 \\ \hline
+        \texttt{C\_prop\_250} & 5537 & 1.04 & 0.10 & 0.59 & 0.99 & 1.06 & 1.10 & 1.22 \\ \hline
+        \texttt{Tend\_250} & 5536 & 136.00 & 8.90 & 108.00 & 130.00 & 138.00 & 143.00 & 154.00  \\ \hline
+        \texttt{C\_prop\_1000} & 4787 & 1.19 & 0.16 & 0.55 & 1.12 & 1.22 & 1.30 & 1.50 \\ \hline
+        \texttt{Tend\_1000} & 4786 & 549.00 & 13.40 & 509.00 & 541.00 & 549.00 & 560.00 & 570.00 \\ \hline
+    \end{tabular}
+\end{table}
+
+
+Entre las conclusiones de los descriptivos se observa que la variable de \texttt{Mañana} tiene la mayoria de sus muestras en un rango de 0 a 100. 
+La variable de apertura-cierre se centra en el cero presentando sospecha de una distribución normal. La variable de mínimo-máximo presenta una distribución exponencial. Las variables de las proporciones se aproximan a una distribución normal, sin embargo   conforme involucran periodos más grandes su distribución se ve distorsionada. 
+
+Por otro lado, se conoce que la variable objetivo es categorica y esta conformada por 0 y 1. La proporción de valores nulos y de unidad se refleja en la figura 6.\\
+
+\newpage
+\newpage
+\newpage
+
+\subsection{Modelos de Aprendizaje Automático}
+Se utilizaron dos algoritmos de aprendizaje supervisado para clasificación.
+
+Los algoritmos de aprendizaje supervisado, o en inglés \textit{Machine Learning (ML)}, se conocen por seguir una serie de pasos para predecir una variable con base a los datos de entrada. Existen varios procesos de los algortimos de ML entre los cuales estan los de regresión y clasificación, los primeros se caracterizan por predecir una variable continua mientras que los de clasificación predicen una variable categorica. En este análisis se utilizan los algoritmos de aprendizaje máquina supervisados del tipo de clasificación, de tal manera que se predice la variable objetivo, la cual describe si el precio de cierre de hoy es menor al de mañana para tomar la decisión de si comprar o no en la acción \cite{bishop}.
+
+Existe gran variedad de algoritmos de aprendizaje máquina, entre los cuales se encuentran los bosques aleatorios y el XGBoost, de los cuales se hablo en la introducción. Se utilizaron las librerias de \textit{Python} de \textit{sklearn} y \textit{xgboost} para utilizar los modelos ya configurados por dichas librerías.
+
+El modelo de bosques aleatorios utilizó 250 árboles en el bosque, la función de separación fue ``Gini" , el cual se calcula restando de uno la suma de las probabilidades al cuadrado de cada clase, por otra parte se configuró el parámetro del número mínimo de muestras en cada separación de cada nodo interno a una cantidad igual a 100.
+
+El modelo de XGBoost se baso en un modelo basado en árboles, con un valor configurado de 250 estimadores.%https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
+
+El interés principal de esta investigación es ver que algoritmo tiene mejores resultados con una configuración de parámetros similar.
+
+\subsection{Selección de Características Secuencial}
+
+Se empleó el algoritmo de Selección de Características Secuencial, en inglés se le conoce como \textit{Sequential Feature Selection (SFS)}, perteneciente a la familia de algoritmos de búsqueda voráz que se utilizan para reducir un espacio de características $p$-dimensional inicial a un subespacio de características $k$-dimensional donde $k < p$. Su objetivo principal es seleccionar el subconjunto de características que sea más relevante para el problema, lo que da como resultado una eficiencia de cálculo óptima y, al mismo tiempo, reduce el error de generalización al filtrar las características irrelevantes.
+
+SFS se utilizó tanto para el algoritmo de bosque aleatorio como para el XGBoost, con el número máximo de 10 características, utilizando el método hacia delante y con la métrica de evaluación de exactitud, o más conocida en inglés como \textit{accuracy}.
+
+
+\subsection{Back-Testing}
+
+La idea más sencilla del \textit{back-testing} es entrenar al modelo con datos pasados hasta cierto momento y probarlo con datos desconocidos hasta ese momento. 
+Se analizó un proceso de \textit{back-testing} con ventana expandida de tal manera que se seleccionaron los primero 13 años para entrenar y un año para probar, después se utilizaron 14 años para entrenar y un año para probar y asi consecutivamente hasta llegar hasta el año 2021 para entrenar y el último año para probar. Se realizó dicha técnica para cada uno de los modelos de ML que se estudiaron en este artículo.
+
+\subsection{Diseño de experimentos}
+
+Se redistribuyeron los datos partiendo del cuadro 3 al 4 para llevar la técnica estadística adecuadamente. En el cuadro 5 es posible observar las medias y desviación estándar para cada grupo, se muestra que la variación es silimar, sin embargo la media de la variable a pronosticar es mayor que la de los modelos de aprendizaje automático.
+
+
+\begin{table}[hbt!]
+\begin{center}
+\caption{Datos iniciales}
+\begin{tabular}{| c | c |c|}
+\hline
+Bosques Aleatorios & XG Boost & y$_{real}$ \\ \hline
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 0 \\ 
+... & ... & ...\\
+\hline
+\end{tabular}
+
+\label{tab:fruta}
+\end{center}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{center}
+\caption{ Datos transformados}
+\begin{tabular}{| c | c |c|}
+\hline
+Variable & Valor \\ \hline
+xgboost & 0  \\
+bosque aleatorio & 1  \\
+ y$_{real}$  & 1  \\ 
+... &  ...\\
+\hline
+\end{tabular}
+
+\label{tab:fruta}
+\end{center}
+\end{table}
+
+\begin{table}[hbt!]
+\caption{Descriptivos por grupo}
+\begin{center}
+\begin{tabular}{| c | c |c|c|}
+\hline
+Variable & Número de muestra & Media & Desviación estándar \\ \hline
+ y$_{real}$  & 2285 & 0.5448 & 0.4980\\
+Bosque Aleatorio & 2285  & 0.4582 & 0.4979\\
+XG Boost & 2285 & 0.4153 & 0.4928 \\ 
+\hline
+\end{tabular}
+
+\label{tab:descriptivosDOE}
+\end{center}
+\end{table}
+
+Es importante validar los supuestos de normalidad y homocedasticidad.
+
+Para el supuesto de normalidad se utilizó la prueba de normalidad de Shapiro- Wilk y los resultados fueron que para bosques aleatorios, XG Boos y $y_{real}$ los valores $p$ son $0.00$, $0.00$ y $0.00$ respectivamente, lo cual indica que se rechaza la hipótesis nula de que los valores provienen de una distribución normal.
+
+Para la prueba de homocedasticidad presento un valor $p$ de $0.00$, lo cual indica que la varianza entre las grupos no es igual.
+
+Se había mencionado anteriormente que el supuesto de normalidad y homocedasticidad se pueden ignorar es importante llevar la metodología adecuadamente.
+
+% \newpage
+
+%fin metodologia
+
+%inicio resultados
+\section{Resultados}
+Se utilizará la matriz de confusión como métrica principal para evaluar a los algoritmos de clasificación, la cual se describe en el cuadro 6.
+La matriz de confusión ayuda a visualizar y a resumir el rendimiento del algoritmo de clasificación. Otra forma de ver esta tabla es como la tabulación cruzada entre el valor real de la variable respuesta y la predicción.
+
+ %insertar matriz de confusion 
+ 
+\begin{table}[hbt!]
+\begin{center}
+\caption{Matriz de confusión}
+\begin{tabular}{|cc|cc|}
+\hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{}}               & \multicolumn{2}{c|}{Reales}                                                                                                                                    \\ \cline{3-4} 
+\multicolumn{2}{|c|}{}                                & \multicolumn{1}{c|}{0}                                                                   & 1                                                                   \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Predicción}} & 0 & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Verdaderos Positivos\\ (VP)\end{tabular}} & \begin{tabular}[c]{@{}c@{}}Falsos Positivos\\ (FP)\end{tabular}     \\ \cline{2-4} 
+\multicolumn{1}{|c|}{}                            & 1 & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Falsos Negativos\\ (FN)\end{tabular}}     & \begin{tabular}[c]{@{}c@{}}Verdaderos Negativos\\ (VN)\end{tabular} \\ \hline
+\end{tabular}
+\label{tab:matrizconfusion}
+\end{center}
+\end{table}
+
+Entre las métricas más importantes que es posible adquirir de la matriz de confusión es la exactitud, la cual se describe por la siguiente ecuación:
+$$\text{Exactitud} = \frac{\text{Verdaderos positivos} + \text{Verdaderos negativos}}{\text{Total de muestras}}$$
+
+La exactitud se describe el número correcto de predicciones.
+
+
+
+\subsection{Selección secuencial de características}
+
+Para el algoritmo de ML de bosques aleatorios se obtuvo que las características que más aportan al modelo son: máximo, día, diferencia de apertura y cierre, la proporción de cierre a 2, 5, 60, 250 y 1000 días y la tendencia de 5 y 1000 días.
+
+Por otro lado, para el algoritmo de XGBoost se obtuvo que las características que más aportaban eran: el cierre, mes, diferencia de apertura y cierre, la proporción de cierre a 2, 5, 60, 250 y 1000 días y la tendencia de 250.
+
+
+\subsection{\textit{Back-testing} para bosques aleatorios}
+La matriz de confusión resultante del proceso de \textit{Back-testing} para bosques aleatorios con las características seleccionadas por SFS es la figura 7.
+
+
+%insertar matriz de confusion
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=8cm]{cfbosques.png}
+    \caption{Matriz de confusión del algoritmo de Bosques aleatorios}
+    \label{fig:cfba}
+\end{figure}
+
+La exactitud para este método resulto ser $48.32\%$.\\
+ 
+\subsection{\textit{Back-testing} para XGBoost}
+La matriz de confusión resultante del proceso de \textit{Back-testing} para XGBoost con las características seleccionadas por SFS se observa en la figura 8.
+
+%insertar matriz de confusion
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=8cm]{cfxgb.png}
+    \caption{Matriz de confusión del algoritmo de XGBoost}
+    \label{fig:cfxgb}
+\end{figure}
+
+El valor de exactitud para el método de XGBoost fue de  $48.57\%$.\\
+
+\subsection{Resultados ANOVA del diseño de experimentos.}
+Es importante destacar que los datos no siguen una distribución normal y no cumplen con el supuesto de homocedasticidad, además se conoce que se rechaza  $H_0$  si pvalor es menor a $\alpha$. En el cuadro 7 se observa que el valor $p$ es muy cercano a cero y el alfa de 0.05. Entonces, se rechaza  $H_0$  , los grupos que se compararon no tienen la misma media.
+\begin{table}[!ht]
+\begin{center}
+\caption{Resultados del ANOVA}
+\begin{tabular}{| c | c |c|c|c|c|c|}
+\hline
+Fuente & SS & DF & MS & F & p-unc & np2 \\ \hline
+Variable & 14.90 & 2 & 7.45 & 49.05 & 0.00 & 0.24\\
+Within & 45.13 & 297& 0.15 & & & \\
+\hline
+\end{tabular}
+\label{tab:ANOVA}
+\end{center}
+\end{table}
+
+
+
+\section{Conclusiones}
+
+Este artículo concluye en primer lugar que  las correlaciones que existen en la figura 6 tomar en cuenta que la variable objetivo presenta correlaciones muy bajas con todas las características. Sin embargo, la variable \texttt{mañana}, presenta correlaciones medias con la proporción de cierre de 60 días,con la variable tendencia a 1000 días y correlaciones altas con año, por la naturaleza del problema se conoce de antemano que se tiene correlación con el mínimo, máximo, apertura y cierre de la acción. 
+
+En segundo lugar, se concluye que las características en común para ambos algoritmos que más aportan en la predicción del movimiento del precio de mañana son la diferencia de apertura y cierre, la proporción de cierre a 2, 5, 60, 250 y 1000 días. Para lo que yo sugiero realizar más investigación sobre la generación de dichas características asi como la adición de características que son similares a este tipo de análisis.
+
+En tercer lugar, es importante mencionar que tanto el algoritmo de bosques aleatorios como el XGBoost tuvieron una estructura similar ya que se basaron en árboles ambos con la cantidad de 250 \textit{week learners}. Dando como resultado una exactitud para el bosque aleatorio de 48.32\% y para el XGBoost de 48.57\%. Esto indica que la estrategia sugerida para este análisis no es satisfactoria ya que no supera ni siquiera el 50\% de exactitud para los modelos.
+
+Por otra parte, es importante mencionar que ambos algoritmos muestran matrices de confusión similares con la mayoria de muestras clasificadas como falsos negativos, la minoria como falsos positivos. Sin embargo en verdaderos positivos el modelo de XGBoost muestra mayor cantidad que el modelo de bosques aleatorios y de manera contraria, el modelo de bosques aleatorios muestra más verdaderos negativos que el modelo de XGBoost. De manera personal si eligiera algún algoritmo seleccionaria el XGBoost ya que prefiere tomar la decisión de no comprar y asi no perdería dinero y tendría la misma exactitud que el de bosque aleatorios que me recomienda comprar sin mejorar la exactitud del análisis.
+
+En cuarto lugar, se probo mediante un diseño de experimentos que se rechaza $H_0$, es decir que al menos un par de medias es diferente, lo cual indica que no es posible lograr reproducir en un futuro los valores de la variable objetivo, ya que la media de los valores reales y la de los modelos difieren significativamente.
+
+Finalmente, es importante recordar que a pesar de que ambos algoritmos con diferentes arquitecturas de ensamble se logro obtener resultados semejantes respecto a tener casi la misma exactitud y matriz de confusión.
+
+
+
+
+
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%\appendix
+
+%\section{Sample Appendix Section}
+%\label{sec:sample:appendix}
+%Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+ \bibliographystyle{elsarticle-num} 
+ \bibliography{cas-refs}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+% \begin{thebibliography}{00}
+
+% %% \bibitem{label}
+% %% Text of bibliographic item
+
+% \bibitem{}
+
+% \end{thebibliography}
+\end{document}
+\endinput
+%%
+%% End of file `elsarticle-template-num.tex'.
+
+
+%% COSAS IMPORTANTES QUE DEBO DE RECORDAR DE DONDE LAS OBTUVE
+%% https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions
+%% https://www.elsevier.com/wps/find/journaldescription.cws_home/620166?generatepdf=true
+%%
